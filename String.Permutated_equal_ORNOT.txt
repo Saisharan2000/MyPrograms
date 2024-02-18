@@ -1,0 +1,36 @@
+import java.util.*;
+import java.lang.Character;
+class HelloWorld {
+    public static void main(String[] args) {
+    //bit vector implemented using boolean array as size of boolean is just 1 bit
+    Set<Character> char_set = new HashSet<>();
+     String str = "abcdea";
+     String str2 = "aabcede";
+     char[] char_arr= str.toLowerCase().toCharArray();
+     char[] char_arr2=str2.toLowerCase().toCharArray();
+     if(char_arr.length!=char_arr2.length)
+     {
+         System.out.print("strings are not permutated");
+         return;
+     }
+     for(char c:char_arr)
+     {
+       if(!char_set.contains(c))
+       {
+           char_set.add(c);
+       }   
+     }
+     for(char c:char_arr2)
+     {
+         if(!char_set.contains(c))
+         {
+             System.out.printf("the strings are not permutated and code broke for %c",c);
+             return;
+         }
+     }
+     System.out.print("the both strings are permutated");
+     
+ 
+    }    
+    
+}

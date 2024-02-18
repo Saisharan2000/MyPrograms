@@ -1,0 +1,55 @@
+class HelloWorld {
+    
+    public static void main(String[] args) {
+        int[][] arr = {
+            {1,2,3,7},
+            {4,0,6,7},
+            {7,8,9,7},
+            {7,7,7,7}
+        };
+      int rowLength =  arr.length;
+      int columnLength = arr[0].length;
+      boolean[] row = new boolean[rowLength];
+      boolean[] column = new boolean[columnLength];
+      boolean[] diagnol1 =  new boolean[rowLength+columnLength-1];
+      boolean[] diagnol2 =  new boolean[rowLength+columnLength-1];
+
+      for(int i =0; i<rowLength; i++)
+      {
+          for(int j =0; j<columnLength; j++)
+          {
+            if(arr[i][j]==0)
+            {
+                row[i] = true;
+                column[j] = true;
+                //(RoeLength-1) -I+J IS THE FORMULA FOR FINDING THE DIAGNOL INDEX FOR THE GIVEN CELL with respect to digonals starting from top left to bottom right ie for (0,0) (1,1) and (2,2)
+                int index1 =j+ (rowLength-1-i);
+                diagnol1[index1] = true;
+                //i+j is for fnding the diagnol index for a given cell with repect to diagnols starting from top right to bottom left ie for (2,0) (1,1) and (0,2)
+                int index2 = j+i;
+                diagnol2[index2]=true;            }
+          }
+      }
+      
+      for(int i =0; i< rowLength; i++)  
+      {
+          for(int j =0; j<columnLength; j++)
+          {
+              int index1 = j +(rowLength-1-i);
+              int index2= i+j;
+              if(row[i]==true || column[j]==true || diagnol1[index1] == true ||diagnol2[index2]==true){
+                  arr[i][j]=0;
+              }
+          }
+      }                              
+             
+          for(int i =0; i< rowLength; i++)
+      {
+          for(int j =0; j<columnLength; j++)
+          {
+              System.out.print(arr[i][j] + " ");
+          }
+          System.out.println();
+      }
+    }
+}

@@ -1,0 +1,32 @@
+Arrays.sort() takes o(nlogn) time.
+Arrays.equaL(array1, array2) takes 0(n) time where n is the lenght of the array
+----------
+Linked Lists are very efficent for insertion of an elemnt at th start of the list which is very useful for some applications
+though the Linked lists have longer access time of worst case being o(n) compared to an array of o(1) time
+---
+recurrion solutions may have the current node context even looping have the node context still recurssion seems to work a lot with context compared to loop where just a small operation or set of operations are performed
+-------
+check for dangling pointers concept which maybe in c language
+-----
+java stores refernce of variable  for user defined data type ie it stores address of variable hence and object or arrayList addresses are stored due to this even though we dont have pointers in java this property of java helps us to work with linked lists or use object's reference variables as pointers.
+-----------------------
+do more algorithms related to recursion like the memoization you did, now do more like recurssion for traversing a linked list, and also doubly linked list implementation if you got time circular linked list implementation and more and more recurssion form problems or semi recurrsion if possible or any other form of code base.
+-----------
+due to static types in java c++ and c we have to give return types or data type for the elements where as in case of dynamic allocation no need to mention the return types exact
+----------------
+Binary search tree was an extension idea from v=dboulb linked list where instead of one next we have 2 next nodes which are arranged in the form of child nodes and the previous node as parent and finally the nodes same level and same parent as current node is sibling node.
+-------------
+Runtime polymorphism is more like reuntime extension where during run based ont he choices we made the Animal parent variable can be either child dog or child cat or child deer
+the objects are created at compile time only but they are attahed to our refernce varibale at run time. our reference variable being Animal parent class. ie we can choose the set of extended class functionality we want at the run time only. this is run time polymorphism
+---
+compile time polymorphism is choosign the functionality at compile time.
+-------
+overriding is when there is an ambiquity of using similar methods between the parent class functionalities and its extended class functionlaites  the overriding concept help it choose extended class functionality and not its similar signitured parent class method. without overrirind the parent class similar method singniture is being choosen.
+--------------------
+check simplyjobs and other gitsHub repos  which ou starred recently.
+------------
+Loop detecting algortihm in LinkedList is Floyeed loop detecting algorithm.
+--------------
+Qeue help in BFE traversal of th tree to traverse the elemnts in the order in which they are viewed
+-------------
+where as stack help in traversing the graph with DFS beacuse we can only view top and lastest element untill all top element siblings ae completed it move to the parent set than grand parent set finally to the root like {leaf, leaf} than {parent, parent} than {grandParent, grandParent} finally root.

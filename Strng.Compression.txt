@@ -1,0 +1,28 @@
+import java.util.HashMap;
+import java.lang.Character;
+import java.lang.Integer;
+import java.util.Map;
+class HelloWorld {
+    public static void main(String[] args) {
+    Map<Character, Integer> char_count = new HashMap<>();
+    String str ="aabbccc";
+    int  length = str.length();
+    for(int i =0; i< length; i++)
+    {
+        char c = str.charAt(i);
+        char_count.put(c, char_count.getOrDefault(c,0)+1);
+    }
+    
+    StringBuilder output = new StringBuilder();
+    //Map.Entry is an interface to  Iterate the key valu pairs of the Map. entrySet() method return the set of {key, Value} pairs from the char_count
+    for(Map.Entry<Character, Integer> entry: char_count.entrySet())
+    {
+        output.append(entry.getKey());
+        output.append(entry.getValue());
+    }
+    String op_string =  output.toString();
+    //in the system.out.println we give the ternary and not the other way of system.out.println in ternary output in other case error
+    System.out.println(op_string.length() < str.length() ? op_string : str);
+
+    }
+}

@@ -1,0 +1,33 @@
+class Node {//singly linked list
+    Node next = null;
+    int data;
+    public Node(int data)
+    {
+        this.data = data;
+    }
+    
+    void append(int data)
+    {
+        Node end = new Node(data);
+        Node temp = this;
+        while(temp.next!=null)
+        {
+            temp = temp.next;
+        }
+        temp.next = end; 
+    }
+    public static void main(String[] args)
+    {
+        Node Test = new Node(4);
+        Test.append(5);
+        Test.append(6);
+        
+        Node temp = Test; //go to the head of the Temp Linked list but this syntax
+        
+        while(temp!= null) //if i give temp.next!= null it stops at element precceding the last element ie last elemnt wont be printed and give 4,5 as output
+        {
+            System.out.println(temp.data);
+            temp = temp.next;
+        }
+    }
+}

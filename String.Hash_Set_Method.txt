@@ -1,0 +1,22 @@
+import java.util.Set;
+import java.util.HashSet;
+import java.lang.Character;
+class HelloWorld {
+    public static void main(String[] args) {
+    
+        String Test = "abcdefa";
+        char char_arr[] = Test.toLowerCase().toCharArray();
+        Set<Character> char_set =  new HashSet<>();
+        for(int i =0; i<char_arr.length; i++)
+        {
+         if(char_set.contains(char_arr[i]) )
+         {
+             System.out.printf("the charectar at index %d is duplicate",i);
+             return;
+         }
+       char_set.add(char_arr[i]);
+            
+        }
+    }    
+    
+}

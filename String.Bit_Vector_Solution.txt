@@ -1,0 +1,21 @@
+class HelloWorld {
+    public static void main(String[] args) {
+    //bit vector implemented using boolean array as size of boolean is just 1 bit
+     boolean[] bitvector = new boolean[256];
+     String str = "abcdea";
+     char[] char_arr= str.toLowerCase().toCharArray();
+     for(char c:char_arr)
+     {
+         int index= (int)c; //ASCII convertion of charectar to int
+         if(bitvector[index])
+         {
+             System.out.printf("Duplicate exists and is %c", c);
+             return;
+             
+         }
+         bitvector[index]= true;
+     }
+     System.out.print("duplicate does not exist");
+    }    
+    
+}

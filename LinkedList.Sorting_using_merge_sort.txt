@@ -1,0 +1,130 @@
+
+
+class Node {
+    Node next = null; //null is default value for newl made node it can also be explicitly given in constructor
+    int data;
+    public Node(int data)
+    { //node constructor it creates a node
+        this.data = data;
+    }
+    
+    void append(int data)
+    { //find the last element where next=null and than adds the next to the currentr node which give the reference to the newly made node to the end node
+        Node end = new Node(data);
+        Node temp = this;
+        while(temp.next!=null)
+        {
+            temp = temp.next;
+        }
+        temp.next = end; 
+    }
+ public Node delete(Node head, int data)
+ {  //delete finds the previous node of the node which we want to delete and than connects the previous and next node of our node which we have to delete which inturns remove the connection with the node we want to delete.
+     Node n = head;
+     if(n.data==data)
+     {
+         return head.next;
+     }
+     while(n.next!=null && n.next.data!=data)
+     {  
+         n = n.next;
+     }
+     
+     n.next.next = null;
+     n.next= n.next.next;
+         
+     
+     return head;
+ }
+ 
+ Node findMiddle(Node head)
+ {
+     if(head==null)
+     {
+         return null;
+     }
+     Node temp1= head;
+     Node temp2= head;
+     
+     while(temp1 != null && temp1.next!= null && temp1.next.next!= null)
+     {//the above condition cause the stackoverflow exception as i didint checked for tem1.next.next != null and without it for the loop when in last node temp.next =null is checked but temp1.next.next will be a nullpointer but see below code we accessign temp1.next.next which is a null pointer hence we should check for it also temp1.next.next != null due to below line 
+         temp1 = temp1.next.next;
+         temp2 =temp2.next;
+     }
+     return temp2;
+ }
+ 
+ Node mergeSort(Node head)
+ {
+     //usually when rearraging the elements of a linked list we create a new list and add elements to it in the rearraging patttern from the old list this gives a new sorted linked list unlike rearraging elements in the current list
+     
+    if(head==null || head.next ==null )
+    {
+        return head; //if 0 or 1  elements in the list return head
+    }
+    
+    
+    Node middle = findMiddle(head); //find middle node
+    
+    Node left = head; //find left segement of the middle node
+    Node right = middle.next; //find the right segment of the middle node
+    middle.next=null; //remove connection between left and right
+    
+    left= mergeSort(left); //apply same logic to find left and right of the left child segment 
+    right = mergeSort(right);//apply same logic to find the left and right of right child segment
+    //now from below part we are traversing up from child segments/lists to the parent lists by sorting the child lists uing merge method and giving the sorted list to the parent which does the same thing wth current node list and its sibling node list
+    
+    
+    return merge(sortedLeft, sortedRight);  //using this function to return the the sorted list from the left and right segment
+ }
+ 
+ Node merge(Node left, Node right)
+ {
+     Node dummy = new Node(0);
+     Node MergeList = dummy;
+     while(left != null && right != null)
+     {
+         if(left.data <= right.data)
+         {
+             MergeList.next = left;
+             left= left.next;
+             MergeList = MergeList.next;
+         }
+         else if(right.data<= left.data)
+         {
+             MergeList.next = right;
+             right = right.next;
+             MergeList = MergeList.next;
+         }
+     }
+     if(left!= null)
+     {
+         MergeList.next = left;
+     }
+     if(right != null)
+     {
+         MergeList.next = right;
+     }
+     return dummy.next;
+ }
+    public static void main(String[] args)
+    {
+        Node Test = new Node(4);
+        Test.append(10);
+        Test.append(9);
+        Test.append(8);
+        Test.append(7);
+        Test.append(6);
+        Test.append(5);
+        
+        Test = Test.delete(Test, 4);
+        Node temp = Test.mergeSort(Test);
+        // Node temp = Test.findMiddle(Test);
+        // System.out.println(temp.data);
+        while(temp!= null)
+        {
+            System.out.println(temp.data);
+            temp = temp.next;
+        }
+    }
+}

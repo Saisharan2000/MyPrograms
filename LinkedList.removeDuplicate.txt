@@ -1,0 +1,70 @@
+class Node
+{
+    //node internal elements
+    Node next = null;
+    int data;
+    
+    //constructor
+    public Node(int data)
+    {
+        this.data= data;
+    }
+    
+    void removeDuplicate()
+    {
+        Node temp2 = new Node(0);
+        Node temp1 = this;
+      while(temp1.next!= null)
+      {
+          temp2 = temp1.next;
+          while(temp2.next!= null)
+          {
+              if(temp2.next.data ==temp1.data)
+              {
+                  
+                  temp2.next = temp2.next.next;
+                  temp2.next.next = null;
+                  continue;
+                  
+              }
+              temp2 = temp2.next;
+          }
+          temp1 = temp1.next;
+      }
+    }
+    void append(int data)
+    { //instead of void if it give append return type the node we inserted example end than calling end.append method this will give methe end node context and not the Test node which is head thinking this way the return type giving Node also may have its merties for improved processing with some work done on algorithm.
+        Node end = new Node(data);
+        Node temp = this;//points to head of the current  instance  node which we are calling ie Test in this case which is the first or also head node of the list
+        
+        while(temp.next!=null)
+        {
+            
+            temp=temp.next;
+        }
+        temp.next= end;
+        
+    }
+    public static void main(String[] args)
+    {
+        Node Test = new Node(10);
+        Test.append(9);
+        Test.append(8);
+        Test.append(7);
+        Test.append(6);
+        Test.append(6);
+        Test.append(5);
+        Test.append(5);
+        //note that when i given test.method or instance_name.method like that the method scope varibales ie "this.variable_names" are the scope of the Test instance varuables. is Test.name has value sai than in the method we called this.name will be sai ie scope belongs to that of Test
+        Test.removeDuplicate();
+        Node output = Test;
+        while(output.next!=null)
+        {
+            System.out.println(output.data);
+            output = output.next;
+        }
+                
+        
+        
+    }
+}

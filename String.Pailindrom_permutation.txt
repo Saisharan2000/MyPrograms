@@ -1,0 +1,39 @@
+import java.lang.Character;
+import java.lang.Integer;
+import java.util.HashMap;
+import java.util.Map;
+class HelloWorld {
+    public static void main(String[] args) {
+  
+  Map<Character, Integer> charFrequency = new HashMap<>();
+  String str = "Hello";
+  for(char c : str.toCharArray())
+  {
+      charFrequency.put(c, charFrequency.getOrDefault(c, 0 )+1);
+      //updated each the the value of "c" key for a new frequency ie for put it inserts and also updates when the value changes
+  }
+  
+  boolean oddFrequency = false;
+  boolean output= true;
+  for(Integer i : charFrequency.values())
+  {
+     if(i%2 != 0)
+     { //from pailndrom properties either the charectar frequency should be all even or at most one odd. in other cases the charectars cant form pailindrom hence permutation not palindrom premutation
+         if(oddFrequency)
+     {
+       output = false;   
+     }
+         oddFrequency= true;
+     }
+     
+  }
+  if(!output)
+  {
+      System.out.print("not a permutation of pailindrome");
+  }
+  else
+  {
+      System.out.print("permutation of pailindrome");
+  }
+    }
+}

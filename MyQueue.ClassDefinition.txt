@@ -1,0 +1,55 @@
+public class MyQueuek<T> { //generic type or the class is ver useful if we want to create a class protperties and methods which can accept any arbitrary data type or class tpe we want. check method defitions for better understadning of the generic type 
+  private static QueueNode<T>{ //this sub class modelled around creation of a node of the queue
+      T data;
+      StackNode<T> next = null;
+      
+     public QueueNode(T data)
+     {
+         this.data = data;
+     }
+  }
+ 
+ //now the Queue also has to have first and last pointers along with the node struture first == keep check of item which removed. last keep check of the item which is added
+  private QueueNode<T> first;
+  private QueueNode<T> last;
+  
+  
+  //now these below are the methadologies to manage the behaviour of the queue using first and last pointers.
+  public T remove()
+  {
+      if(first == null) throw new NoSuchElmentException();
+      T first = first.data;
+      first = first.next;
+      if(first == null)
+      {
+          last == null; //as for one element both first and last point that element if first will be null so will be last also
+      }
+      return data;
+  }
+  public void add(T item)
+  {
+      QueueNode<T> t = new QueueNode<T>(item);
+      if(last!=null)
+      {
+      last.next = t;
+      }
+      last = t;
+      if(first == null)
+      {
+          first = last;
+      }
+      
+  }
+  public T peek() //gives the elemnt which will be removed if remove funtionality triggered
+  {
+      if(first == null) throw NoSuchElementException();
+      return first.data;
+  }
+  
+  //check for emptiness of the queue
+  public Boolean isEmpty()
+  {
+      return first == null;
+  }
+   
+}

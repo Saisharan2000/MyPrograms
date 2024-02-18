@@ -1,0 +1,15 @@
+class HelloWorld {
+    
+    public static void main(String[] args) {
+        String str = "sai";//original string
+        String str2 = "isa"; //rotated string
+        
+        String concatenated = str+str;
+        
+       //method 1
+        System.out.println(concatenated.contains(str2));
+       
+       //method 2 
+       System.out.println(concatenated.indexOf(str2)!=-1);
+    }
+}

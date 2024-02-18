@@ -1,0 +1,68 @@
+class Node
+{
+    //node internal elements
+    Node next = null;
+    int data;
+    
+    //constructor
+    public Node(int data)
+    {
+        this.data= data;
+    }
+    
+    void append(int data)
+    {
+        Node end = new Node(data);
+        Node temp = this;
+        while (temp.next!=null)
+        {
+            temp = temp.next;
+        }
+        temp.next=end;
+    }
+    Node kThNodeFromLast(int k)
+    {
+        Node fast = this;
+        Node slow = this;
+      for(int i =0; i<k; i++)
+      {
+          if(fast==null)
+          {
+              //the list ended before reached we kth element ie list length less than k
+              return null;
+          }
+          fast = fast.next;
+      }
+      while(fast.next!=null)
+      {
+          fast = fast.next;
+          slow= slow.next;
+      }
+      return slow;
+    
+    }
+   
+    public static void main(String[] args)
+    {
+        Node Test = new Node(10);
+        Test.append(9);
+        Test.append(8);
+        Test.append(7);
+        Test.append(6);
+        Test.append(6);
+        Test.append(5);
+        Test.append(5);
+        //note that when i given test.method or instance_name.method like that the method scope varibales ie "this.variable_names" are the scope of the Test instance varuables. is Test.name has value sai than in the method we called this.name will be sai ie scope belongs to that of Test
+        Node kth_from_end = Test.kThNodeFromLast(2);
+        System.out.println(kth_from_end.data);
+        // Node output = Test;
+        // while(output.next!=null)
+        // {
+        //     System.out.println(output.data);
+        //     output = output.next;
+        // }
+                
+        
+        
+    }
+}

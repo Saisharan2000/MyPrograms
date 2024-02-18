@@ -1,0 +1,79 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class Node {
+    Node next = null;
+    int data;
+    public Node(int data)
+    {
+        this.data = data;
+    }
+    
+    void append(int data)
+    {
+        Node end = new Node(data);
+        Node temp = this;
+        while(temp.next!=null)
+        {
+            temp = temp.next;
+        }
+        temp.next = end; 
+    }
+ public Node delete(Node head, int data)
+ {
+     Node n = head;
+     if(n.data==data)
+     {
+         return head.next;
+     }
+     while(n.next.data!=data)
+     {
+         n = n.next;
+     }
+     if(n.next.data==data)
+     {
+         n.next= n.next.next;
+         return head;
+     }
+     return head;
+ }
+ //statuc method is the method which is in scope of class definition and not scope of a particular instance
+  Node reverseList()
+ {                  
+     Node Next =  null;
+     Node current = this;
+     Node Prev = null;
+     
+     while(current!=null)
+     {
+         Next = current.next; //store the next node
+         current.next= Prev;//move the edge backwards
+         Prev = current;//move previous node to current position
+         current = Next;//move current node to next positon
+     };
+     
+   return Prev;
+     
+ }
+    public static void main(String[] args)
+    {
+        Node Test = new Node(7);
+        Test.append(1);
+        Test.append(6);
+        Node temp = Test;
+        while(temp != null)
+        {
+            System.out.print(temp.data + "-> ");
+            temp  = temp.next;
+        }
+        System.out.println();
+       
+        
+        Node temp2 = Test.reverseList();
+        while(temp2 != null)
+        {
+            System.out.print(temp2.data + "-> ");
+            temp2  = temp2.next;
+        }
+    }
+}

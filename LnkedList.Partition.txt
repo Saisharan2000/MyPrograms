@@ -1,0 +1,90 @@
+class Node
+{
+    //node internal elements
+    Node next = null;
+    int data;
+    
+    //constructor
+    public Node(int data)
+    {
+        this.data= data;
+    }
+    
+    void append(int data)
+    {
+        Node end = new Node(data);
+        Node temp = this;
+        while (temp.next!=null)
+        {
+            temp = temp.next;
+        }
+        temp.next=end;
+    }
+   Node partition(int partition_num)
+   {
+       Node partition1head = new Node(0);
+       Node partition1tail = partition1head;
+       Node temp = this;
+       Node partition2head = new Node(0);
+       Node partition2tail = partition2head;
+       
+       while (temp!= null )
+       {
+           if(temp.data < partition_num)
+           {
+               partition1tail.append(temp.data);
+               partition1tail = partition1tail.next;
+               
+             }
+           else
+           {
+               partition2tail.append(temp.data);
+               partition2tail = partition2tail.next;
+               
+               
+           }
+           temp= temp.next;
+       }
+       
+       partition1tail.next = partition2head.next;
+       return partition1head.next;
+   }
+   
+    public static void main(String[] args)
+    {
+        Node Test = new Node(10);
+        Test.append(9);
+        Test.append(8);
+        Test.append(7);
+        Test.append(6);
+        Test.append(5);
+        Test.append(4);
+        Test.append(3);
+        //note that when i given test.method or instance_name.method like that the method scope varibales ie "this.variable_names" are the scope of the Test instance varuables. is Test.name has value sai than in the method we called this.name will be sai ie scope belongs to that of Test
+        Node temp = Test;
+         while(temp!=null)
+        {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+        System.out.println();
+        Node partition_op = Test.partition(7);
+        
+        while(partition_op!=null)
+        {
+            System.out.print(partition_op.data + " ");
+            partition_op = partition_op.next;
+        }
+        
+         
+        // Node output = Test;
+        // while(output.next!=null)
+        // {
+        //     System.out.println(output.data);
+        //     output = output.next;
+        // }
+                
+        
+        
+    }
+}

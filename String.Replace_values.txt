@@ -1,0 +1,25 @@
+//As strings are immutable we need to make a string builder and replace the current string va;ue where needed and appending the remaining values
+
+import java.lang.Character;
+class HelloWorld {
+    public static void main(String[] args) {
+    //bit vector implemented using boolean array as size of boolean is just 1 bit
+  String str = "I am Having a bad day";
+  StringBuilder strBuilder  = new StringBuilder(); 
+
+//String Builder is a Dynamic array and not string hence strBuilder.toString() method at to end.
+  
+  for(char c : str.toCharArray())
+  {
+      if(c == ' ')
+      {
+          strBuilder.append("%20");
+      }
+      else
+      {
+          strBuilder.append(c);
+      }
+  }
+   System.out.print(strBuilder.toString());
+    }
+}

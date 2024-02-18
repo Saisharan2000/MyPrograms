@@ -1,0 +1,74 @@
+
+class Node {
+    Node next = null;
+    int data;
+    public Node(int data)
+    {
+        this.data = data;
+    }
+    
+    void append(int data)
+    {
+        Node end = new Node(data);
+        Node temp = this;
+        while(temp.next!=null)
+        {
+            temp = temp.next;
+        }
+        temp.next = end; 
+    }
+ public Node delete(Node head, int data)
+ {
+     Node n = head;
+     if(n.data==data)
+     {
+         return head.next;
+     }
+     while(n.next.data!=data)
+     {
+         n = n.next;
+     }
+     if(n.next.data==data)
+     {
+         n.next= n.next.next;
+         return head;
+     }
+     return head;
+ }
+ //statuc method is the method which is in scope of class definition and not scope of a particular instance
+ static void sumLists(Node List1, Node List2)
+ {                   //List1 and Lsit2 copy the reference of the original lists hence they can access the objects but the objects are not being copied;
+     Node temp1 = List1;
+     Node temp2 = List2;
+     int number1 = 0;
+     int number2 =0;
+     int count  = 0;
+    while (temp1 != null) {
+        number1 += Math.pow(10, count) * temp1.data;
+        temp1 = temp1.next;
+        count++;
+    }
+    
+    count = 0; 
+    
+    while (temp2 != null) {
+        number2 += Math.pow(10, count) * temp2.data;
+        temp2 = temp2.next;
+        count++;
+    }
+     System.out.println(number1  + number2);
+     
+ }
+    public static void main(String[] args)
+    {
+        Node num1 = new Node(7);
+        num1.append(1);
+        num1.append(6);
+        
+        Node num2 = new Node(5);
+        num2.append(9);
+        num2.append(2);
+        
+        sumLists(num1,num2);
+    }
+}

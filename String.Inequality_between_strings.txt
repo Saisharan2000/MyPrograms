@@ -1,0 +1,68 @@
+class HelloWorld {
+    public static void main(String[] args) {
+    String str1 = "aabbcc";
+    String str2 = "aabbcc ";
+    int edit =0;
+    
+    //if length diff>1 between both strings
+    if(Math.abs(str1.length()-str2.length())>1)
+    {
+       System.out.print("edited values is greater than 1");
+       return;
+    }
+    
+    //if length  diff is same
+    if(str1.length() == str2.length())
+    {
+        for(int i =0; i< str1.length(); i++)
+        {
+            if(str1.charAt(i)!= str2.charAt(i))
+            {
+                edit++;
+            }
+        }
+        if(edit>1)
+        {
+            System.out.print("edited values is greater than 1");
+            return;
+        }
+        else
+        {
+            System.out.printf("edited is %d", edit);
+            return;
+        }
+    }
+    
+    //if the length diff equal to 1
+    int i=0, j=0;
+    
+    while(i< str1.length() && j<str2.length())
+    { //I consider is special while loop with iteration of 2 strings with i and j same time. if shorter string completes then it breaks and not consider the longer string as we cant compare them &&==> any one should break for false ||  => both should break for false as it is working on true true considtions from beginning and breaks on false
+        if(str1.charAt(i)!=str2.charAt(j))
+        {
+            edit++;
+            if(str1.length()>str2.length())
+            {
+                i++;
+            }
+            else if(str2.length()> str1.length())
+            {
+                j++;
+            }
+        }
+        else{
+        i++;
+        j++;
+        }
+    }
+    edit += str1.length()-i +  str2.length()-j;
+    if(edit<=1)
+    {
+   System.out.printf("the edit value is %d", edit);
+    }
+   else
+   {
+       System.out.print("the edit is greate than 1");
+   }
+    }
+}
